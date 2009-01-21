@@ -1,40 +1,9 @@
-#  OFC2::Chart.new do |chart|
-#    chart.title = "123123"
-#    chart.animate = true
-
-#    chart.x_axis do |x|
-#      x.range( min, max, steps )
-#      x.legend do
-
-#      end
-#    end
-#    
-#    chart.y_axis do |y|
-#      y.range( min, max, steps )
-#      y.legend do
-#      
-#      end
-#    end
-
-#   chart.3d_bar do |bar|
-#      bar.values = []
-#      bar.color = ''
-#    end
-
-#    chart.line do |line|
-#      line.values = @balance_sums
-#      line.halo_size= 0
-#      line.width= 2
-#      line.dot_size= 6
-#      line.colour = "#FA8B37"
-#    end
-#   end  
-
 class Chart
   
-  def initialize
+  def initialize(args = {})
     @hash = Hash.new
     @hash[:elements] = []
+    @hash.merge(args)
     yield self if block_given?
   end
 
@@ -68,17 +37,29 @@ class Chart
   def axis( type, args ={})
     temp = Axis.new(args)
     yield temp if block_given?
-    @hash["#{type}_axis".to_sym] = temp
+    @hash["#{type}_axis".to_sym] = temp.to_hash
   end
 end
 
 if __FILE__ == $0
+  %W{ rubygems 
+      json 
+      element 
+      axis 
+      elements/bar 
+      elements/hbar 
+      elements/line 
+      elements/line_dot 
+      elements/line_hollow 
+      elements/pie }.each{ |file| require file }
+
   c = Chart.new do |chart|
     chart.title( :text => "hi", 
                  :style => "asdasd")
 
     chart.axis(:y) do |y|
-      y.range :min => 0, :max => 10
+      y.range :min => 0, 
+              :max => 10
     end
   
     chart.axis(:x, :range => { :min => 0, :max => 10}) do |x|
@@ -94,5 +75,4 @@ if __FILE__ == $0
   end
 
   puts c.to_json
-  
 end

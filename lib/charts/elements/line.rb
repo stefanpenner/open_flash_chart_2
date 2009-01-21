@@ -19,7 +19,7 @@ class Line
 
   def initialize(hash = {})
     @hash = {}  
-    @hash = hash 
+    @hash.merge(hash) 
     @hash[:type] = :line
   end
 

@@ -27,7 +27,7 @@ class Hbar
 
   def initialize(hash = {})
     @hash = {}  
-    @hash = hash 
+    @hash.merge(hash) 
     @hash[:type] = :hbar 
   end
 

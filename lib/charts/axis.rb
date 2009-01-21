@@ -5,9 +5,7 @@ class Axis
   
   #custom methods
   def range( args )
-    @hash[:max] = args[:max]     if args[:max]
-    @hash[:min] = args[:min]     if args[:min]
-    @hash[:steps] = args[:steps] if args[:steps]
+    @hash[:range] = args
   end
 
   def tick_height(args)
@@ -35,7 +33,7 @@ class Axis
     end
   end
 
-  def to_json
-    @hash.to_json
+  def to_hash
+    @hash
   end
 end

@@ -29,7 +29,7 @@ class LineDot
 
   def initialize(hash = {})
     @hash = {}  
-    @hash = hash 
+    @hash.merge(hash) 
     @hash[:type] = :line_dot
   end
 

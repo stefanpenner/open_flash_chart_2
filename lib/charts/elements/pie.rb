@@ -35,7 +35,7 @@ class Pie
   def initialize(hash = {})
     @hash = {}
     @hash[:type] = :pie
-    @hash = hash 
+    @hash.merge(hash) 
   end
 
  # stupid hypenated attributes
