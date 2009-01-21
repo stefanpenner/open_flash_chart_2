@@ -11,12 +11,22 @@ module Element
           @hash[attribute] = args if args
         end
       end
+    end
+ 
+    def create(args={})
+      temp = new(args)
+      yield temp if block_given? 
+      temp
     end 
   end
   
   module InstanceMethods
     def to_hash
       @hash
+    end
+  
+    def [](attribute)
+      @hash[attribute]
     end
   end
 end

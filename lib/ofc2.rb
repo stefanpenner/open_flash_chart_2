@@ -2,7 +2,7 @@ require 'rubygems'
 require 'json'
 
 require 'charts/axis'
-require 'charts/element'
+require 'charts/elements/element'
 require 'charts/elements/bar'
 require 'charts/elements/hbar'
 require 'charts/elements/line'

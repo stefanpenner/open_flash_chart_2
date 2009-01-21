@@ -23,7 +23,6 @@
 # }
 #  
 #
-
 class Bar
   include Element
 
@@ -35,12 +34,12 @@ class Bar
   def initialize(hash = {})
     @hash = {}  
     @hash.merge(hash) 
-    @hash[:type] = :bar 
+    @hash[:type] = :bar
   end
 
-
-  def font_size
+  def font_size( args )
     @hash['font-size'] = args if args
   end
   
 end
+

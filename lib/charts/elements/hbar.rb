@@ -28,10 +28,10 @@ class Hbar
   def initialize(hash = {})
     @hash = {}  
     @hash.merge(hash) 
-    @hash[:type] = :hbar 
+    @hash[:type] = :hbar
   end
 
-  def font_size
-    @hash['font-size'] = args if args
+  def font_size(arg)
+    @hash['font-size'] = arg if arg
   end 
 end

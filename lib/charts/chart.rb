@@ -44,8 +44,8 @@ end
 if __FILE__ == $0
   %W{ rubygems 
       json 
-      element 
       axis 
+      elements/element
       elements/bar 
       elements/hbar 
       elements/line 
