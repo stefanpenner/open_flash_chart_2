@@ -10,6 +10,6 @@ require 'charts/elements/line_dot'
 require 'charts/elements/line_hollow'
 require 'charts/elements/pie'
 require 'charts/chart'
-class OFC2
+module OFC2
 
 end

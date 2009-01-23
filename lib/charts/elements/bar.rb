@@ -23,6 +23,7 @@
 # }
 #  
 #
+
 class Bar
   include Element
 

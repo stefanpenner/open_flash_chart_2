@@ -20,14 +20,14 @@ class LineDotTest < Test::Unit::TestCase
 
   context "attributes with a hyphen" do
     setup do
-      @lineDot = LineDot.create do |l|
-        h.font_size 5
-        h.dot_size 4
+      @line_dot = LineDot.create do |l|
+        l.font_size 5
+        l.dot_size 4
       end
     end
     should "contain its assigned attributes and there correct values" do
-      assert_equal @lineDot['font-size'], 5
-      assert_equal @lineDot['dot-size'],  4
+      assert_equal @line_dot['font-size'], 5
+      assert_equal @line_dot['dot-size'],  4
     end
   end
 end

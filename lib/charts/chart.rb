@@ -7,6 +7,9 @@ class Chart
     yield self if block_given?
   end
 
+  def [](key)
+    @hash[key]
+  end
   def to_hash
     @hash
   end
@@ -20,27 +23,31 @@ class Chart
 
   def graph(type, args={})
    
-    temp = case type
+    graph = case type
       when :pie         then Pie.new( args )
       when :bar         then Bar.new( args )
-      when :hbar        then HBar.new( args )
+      when :hbar        then Hbar.new( args )
       when :line        then Line.new( args )
       when :line_dot    then LineDot.new( args )
       when :line_hollow then LineHollow.new( args )
     end 
   
-    yield temp if block_given?
+    yield graph if block_given?
 
-    @hash[:elements] << temp.to_hash
+    @hash[:elements] << graph.to_hash
+    
+    graph
   end
  
   def axis( type, args ={})
-    temp = Axis.new(args)
-    yield temp if block_given?
-    @hash["#{type}_axis".to_sym] = temp.to_hash
+    axis = Axis.new(args)
+    yield axis if block_given?
+    @hash["#{type}_axis".to_sym] = axis.to_hash
+    axis
   end
 end
 
+=begin
 if __FILE__ == $0
   %W{ rubygems 
       json 
@@ -76,3 +83,4 @@ if __FILE__ == $0
 
   puts c.to_json
 end
+=end

@@ -12,8 +12,7 @@
 class LineHollow
   include Element
 
-  hash_writer :alpha,
-              :colour,
+  hash_writer :colour,
               :text,
               :values,
               :width

@@ -1,8 +1,12 @@
 class Axis
   def initialize(hash = {})
     @hash = hash
+    yield self if block_given?
   end
   
+  def [](key)
+    @hash[key]
+  end
   #custom methods
   def range( args )
     @hash[:range] = args
@@ -26,8 +30,7 @@ class Axis
   #   @hash[:attribute] = args if args
   # end
   #
-
-  [:max,:min,:stroke,:colour, :offset,:steps,:labels].each do |attribute|
+  [:stroke,:colour, :offset,:steps,:labels].each do |attribute|
     define_method attribute do |args|
       @hash[attribute.to_s.downcase.to_sym] = args if args
     end
